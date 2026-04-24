@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    background-color: blueviolet;
+}
+
+.container { padding: 50px; }
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: #88ce02; /* GSAP Green */
+  border-radius: 10px;
+}
