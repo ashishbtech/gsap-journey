@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pinning</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 text-white">
+  <div class="h-screen flex items-center justify-center text-zinc-600 tracking-widest">
+    APPROACH
+  </div>
+
+  <div class="pin-container h-screen bg-zinc-800 flex items-center justify-center overflow-hidden relative">
+     <h1 class="text-[12vw] font-black absolute z-0 text-zinc-700 tracking-tighter">VALHALLA</h1>
+     <div class="artifact w-64 h-96 bg-cyan-600 rounded-xl z-10 shadow-2xl"></div>
+  </div>
+
+  <div class="h-screen flex items-center justify-center text-zinc-600 tracking-widest">
+    DEPART
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".artifact", {
+      scrollTrigger: {
+        trigger: ".pin-container",
+        pin: true,
+        start: "top top",
+        end: "+=1500",
+        scrub: 1
+      },
+      scale: 1.5,
+      rotationY: 360
+    });
+  </script>
+</body>
+</html>

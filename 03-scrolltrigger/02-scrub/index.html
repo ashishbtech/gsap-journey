@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Scrub Animation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 overflow-x-hidden">
+  <div class="h-screen flex items-center justify-center text-zinc-600 text-2xl tracking-widest">
+    KEEP SCROLLING
+  </div>
+
+  <div class="h-screen flex items-center justify-center relative">
+    <div class="shuriken w-32 h-32 bg-zinc-800 border-4 border-orange-500 rotate-45 flex items-center justify-center">
+       <div class="w-8 h-8 bg-zinc-900 rounded-full"></div>
+    </div>
+  </div>
+
+  <div class="h-screen"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".shuriken", {
+      scrollTrigger: {
+        trigger: ".shuriken",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 2
+      },
+      rotation: 720,
+      scale: 2
+    });
+  </script>
+</body>
+</html>
