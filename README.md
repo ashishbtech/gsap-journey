@@ -14,15 +14,15 @@ To build a deep, practical understanding of GSAP by moving logically through its
 - [x] **Stagger:** Animating groups of elements sequentially.
 
 ### 02. Timelines
-- [ ] **Basic Timeline:** Orchestrating multiple tweens with `gsap.timeline()`.
-- [ ] **Sequencing:** Managing the order of complex animations.
-- [ ] **Overlap Control:** Using the Position Parameter (`<`, `>`, `+=`) for precise timing.
+- [x] **Basic Timeline:** Orchestrating multiple tweens with `gsap.timeline()`.
+- [x] **Sequencing:** Managing the order of complex animations.
+- [x] **Overlap Control:** Using the Position Parameter (`<`, `>`, `+=`) for precise timing.
 
 ### 03. ScrollTrigger (The Heavy Hitter)
-- [ ] **Trigger:** Firing animations when elements enter the viewport.
-- [ ] **Scrub:** Tying animation progress directly to the scrollbar.
-- [ ] **Pin:** Pinning sections to the screen while animations play out.
-- [ ] **Horizontal Scroll:** Creating fake horizontal scrolling within a vertical page.
+- [x] **Trigger:** Firing animations when elements enter the viewport.
+- [x] **Scrub:** Tying animation progress directly to the scrollbar.
+- [x] **Pin:** Pinning sections to the screen while animations play out.
+- [x] **Horizontal Scroll:** Creating fake horizontal scrolling within a vertical page.
 
 ### 04. Intermediate Projects
 - [ ] **Animated Navbar:** Dropdowns, magnetic buttons, and menu reveals.
