@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Complex Timelines</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 text-white font-sans h-screen overflow-hidden relative">
+
+  <div class="loader absolute inset-0 bg-zinc-950 z-50 flex items-center justify-center">
+    <div class="loader-bar w-0 h-1 bg-cyan-500 absolute bottom-1/2 left-0"></div>
+    <div class="loader-text text-2xl tracking-widest font-bold text-zinc-600">LOADING DATA...</div>
+  </div>
+
+  <div class="ui-wrapper w-full h-full p-10 flex flex-col opacity-0">
+    <header class="ui-header flex justify-between items-center mb-10 border-b border-zinc-800 pb-6">
+      <div class="text-xl font-bold">SYSTEM</div>
+      <button id="restart-btn" class="px-4 py-2 bg-cyan-900 hover:bg-cyan-800 rounded text-sm tracking-widest font-bold uppercase transition-colors">
+        Reboot System
+      </button>
+    </header>
+    
+    <main class="flex-1 flex gap-10">
+      <div class="ui-card flex-1 bg-zinc-800 rounded-xl h-full shadow-2xl"></div>
+      <div class="ui-card flex-1 bg-zinc-800 rounded-xl h-full shadow-2xl"></div>
+      <div class="ui-card flex-1 bg-zinc-800 rounded-xl h-full shadow-2xl"></div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    let masterTl;
+
+   
+    function loaderAnimation() {
+      const tl = gsap.timeline();
+      tl.to(".loader-bar", { width: "100%", duration: 1.5, ease: "power3.inOut" })
+        .to(".loader-text", { opacity: 0, duration: 0.3 }, "-=0.5")
+        .to(".loader", { yPercent: -100, duration: 0.8, ease: "power4.inOut" });
+      return tl;
+    }
+
+    
+    function uiReveal() {
+      const tl = gsap.timeline();
+      tl.to(".ui-wrapper", { opacity: 1, duration: 0.1 })
+        .fromTo(".ui-header", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 })
+        .fromTo(".ui-card", 
+          { y: 50, opacity: 0 }, 
+          { y: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: "back.out(1.2)" }, 
+          "-=0.4"
+        );
+      return tl;
+    }
+
+   
+    function initAnimation() {
+     
+      gsap.set(".loader", { yPercent: 0 });
+      gsap.set(".loader-bar", { width: 0 });
+      gsap.set(".loader-text", { opacity: 1 });
+      gsap.set(".ui-wrapper", { opacity: 0 });
+
+      
+      masterTl = gsap.timeline();
+      masterTl.add(loaderAnimation())
+              .add(uiReveal(), "-=0.3");
+    }
+
+    
+    initAnimation();
+
+    
+    document.getElementById("restart-btn").addEventListener("click", () => {
+      masterTl.kill(); 
+      initAnimation(); 
+    });
+  </script>
+</body>
+</html>
