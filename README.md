@@ -25,19 +25,19 @@ To build a deep, practical understanding of GSAP by moving logically through its
 - [x] **Horizontal Scroll:** Creating fake horizontal scrolling within a vertical page.
 
 ### 04. Intermediate Projects
-- [ ] **Animated Navbar:** Dropdowns, magnetic buttons, and menu reveals.
-- [ ] **Scroll Reveal Sections:** Modern, smooth content reveals on scroll.
-- [ ] **Image Gallery:** Staggered grid reveals and hover effects.
+- [x] **Animated Navbar:** Dropdowns, magnetic buttons, and menu reveals.
+- [x] **Scroll Reveal Sections:** Modern, smooth content reveals on scroll.
+- [x] **Image Gallery:** Staggered grid reveals and hover effects.
 
 ### 05. Advanced Concepts
-- [ ] **Text Splitting:** Using SplitText (or similar) for character/word animations.
-- [ ] **Complex Timelines:** Nesting timelines and modular animation functions.
-- [ ] **Page Transitions:** Animating seamlessly between different HTML pages.
+- [x] **Text Splitting:** Using SplitText (or similar) for character/word animations.
+- [x] **Complex Timelines:** Nesting timelines and modular animation functions.
+- [x] **Page Transitions:** Animating seamlessly between different HTML pages.
 
 ### 06. Mini-Projects (Bringing it all together)
-- [ ] **Loader Animation:** Custom SVG or CSS loader sequences.
-- [ ] **Hero Section:** High-impact landing page introductions.
-- [ ] **Parallax Landing:** Depth-driven scroll experiences.
+- [x] **Loader Animation:** Custom SVG or CSS loader sequences.
+- [x] **Hero Section:** High-impact landing page introductions.
+- [x] **Parallax Landing:** Depth-driven scroll experiences.
 
 ## 🛠️ Tech Stack
 * HTML5
