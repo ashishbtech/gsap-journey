@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Parallax Landing</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  /* Triangle shapes for our pure CSS mountains */
+  .mountain { clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+</style>
+</head>
+<body class="bg-zinc-900 text-white font-sans overflow-x-hidden">
+
+  <div class="parallax-container relative h-screen overflow-hidden bg-zinc-950 flex justify-center items-center">
+    
+    <div class="layer-bg absolute inset-0 flex items-end justify-center pb-20">
+      <div class="mountain w-[120vw] h-[60vh] bg-zinc-900 absolute opacity-50"></div>
+    </div>
+
+    <div class="layer-mid absolute inset-0 flex items-end justify-center">
+      <div class="mountain w-[80vw] h-[40vh] bg-zinc-800 -ml-[40vw]"></div>
+      <div class="mountain w-[90vw] h-[50vh] bg-zinc-800 -mr-[40vw]"></div>
+    </div>
+
+    <div class="layer-front absolute z-10 text-center">
+      <h1 class="text-[12vw] font-black uppercase tracking-tighter text-amber-500 drop-shadow-2xl">
+        EXPLORE
+      </h1>
+    </div>
+
+    <div class="layer-cover absolute -bottom-10 w-full h-32 bg-zinc-900 blur-xl z-20"></div>
+
+  </div>
+
+  <main class="relative z-30 bg-zinc-900 min-h-[200vh] py-32 px-10">
+    <div class="max-w-4xl mx-auto space-y-10">
+      <h2 class="text-5xl font-black text-amber-500 mb-10">The Journey Begins</h2>
+      <p class="text-zinc-400 text-xl leading-relaxed">
+        Scroll back up and watch how the layers move at different speeds. The text in the foreground moves the fastest, while the massive mountain in the background barely moves at all. This difference in velocity creates the optical illusion of depth.
+      </p>
+      <div class="w-full h-96 bg-zinc-800 rounded-xl mt-20"></div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // We attach the timeline directly to the scrollbar
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".parallax-container",
+        start: "top top",
+        end: "bottom top", // Ends when the bottom of the container hits the top of the screen
+        scrub: 1 // Smooth scrubbing
+      }
+    });
+
+    // Animate layers at different speeds to create depth
+    tl.to(".layer-bg", { yPercent: 30, ease: "none" }, 0)   // Slowest
+      .to(".layer-mid", { yPercent: 60, ease: "none" }, 0)  // Medium
+      .to(".layer-front", { yPercent: 120, ease: "none" }, 0); // Fastest
+  </script>
+</body>
+</html>

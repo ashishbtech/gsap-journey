@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hero Section</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-white font-sans overflow-hidden">
+
+  <div class="hero-wrapper invisible h-screen flex flex-col md:flex-row items-center justify-center px-10 md:px-24">
+    
+    <div class="flex-1 space-y-6 z-10">
+      <div class="overflow-hidden">
+        <h1 class="hero-text text-6xl md:text-8xl font-black uppercase tracking-tighter text-cyan-500 transform translate-y-full">
+          Design
+        </h1>
+      </div>
+      <div class="overflow-hidden">
+        <h1 class="hero-text text-6xl md:text-8xl font-black uppercase tracking-tighter transform translate-y-full">
+          Beyond
+        </h1>
+      </div>
+      <div class="overflow-hidden">
+        <h1 class="hero-text text-6xl md:text-8xl font-black uppercase tracking-tighter text-zinc-600 transform translate-y-full">
+          Limits.
+        </h1>
+      </div>
+      
+      <p class="hero-subtext opacity-0 transform translate-y-4 text-zinc-400 max-w-md tracking-widest leading-relaxed pt-4">
+        We build digital experiences that push the boundaries of what is possible on the modern web.
+      </p>
+
+      <button class="hero-btn opacity-0 px-8 py-4 bg-cyan-600 hover:bg-cyan-500 rounded text-sm font-bold tracking-widest uppercase transition-colors">
+        Start Project
+      </button>
+    </div>
+
+    <div class="flex-1 flex justify-end w-full mt-10 md:mt-0 relative">
+      <div class="hero-image w-full md:w-[80%] aspect-[4/5] bg-gradient-to-tr from-cyan-900 to-zinc-800 rounded-2xl shadow-2xl overflow-hidden relative" style="clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);">
+         <div class="absolute inset-0 border border-cyan-500/30 rounded-2xl m-4"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    // Reveal the wrapper securely
+    gsap.set(".hero-wrapper", { autoAlpha: 1 });
+
+    const tl = gsap.timeline({ delay: 0.2 });
+
+    // 1. Unveil the image using clip-path (pulling it up from the bottom)
+    tl.to(".hero-image", {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      duration: 1.5,
+      ease: "power4.inOut"
+    })
+    // 2. Scale down the image slightly for a "settling" effect
+    .from(".hero-image", {
+      scale: 1.1,
+      duration: 1.5,
+      ease: "power3.out"
+    }, "-=1.5")
+    // 3. Stagger the main typography up from behind their overflow-hidden masks
+    .to(".hero-text", {
+      y: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out"
+    }, "-=1.0")
+    // 4. Fade in the subtext and button
+    .to([".hero-subtext", ".hero-btn"], {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power2.out"
+    }, "-=0.5");
+  </script>
+</body>
+</html>

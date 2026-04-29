@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cinematic Loader</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 text-white font-sans overflow-hidden"> <div class="loader-overlay fixed inset-0 z-50 bg-zinc-950 flex flex-col items-center justify-center">
+    <div class="overflow-hidden mb-4">
+      <h1 class="loader-title text-4xl font-black tracking-widest text-orange-500 transform translate-y-full">
+        INITIALIZING
+      </h1>
+    </div>
+    <div class="w-64 h-1 bg-zinc-800 rounded overflow-hidden">
+      <div class="loader-progress w-0 h-full bg-orange-500"></div>
+    </div>
+    <div class="loader-percentage mt-4 text-zinc-500 font-mono tracking-widest text-sm">0%</div>
+  </div>
+
+  <main class="main-content opacity-0 min-h-screen flex flex-col items-center justify-center p-10">
+    <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-6">Welcome<br>To The Grid</h2>
+    <p class="text-zinc-400 tracking-widest text-lg max-w-lg text-center">
+      The system has been fully loaded and you are now free to explore the network.
+    </p>
+    <div class="h-screen mt-24 flex items-center text-zinc-600 tracking-widest">SCROLL DOWN TEST</div>
+    <div class="h-screen flex items-center text-zinc-600 tracking-widest">BOTTOM OF PAGE</div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    const tl = gsap.timeline();
+    const progressObj = { value: 0 }; // A dummy object GSAP can animate
+
+    // 1. Loader Sequence
+    tl.to(".loader-title", {
+      y: 0,
+      duration: 0.8,
+      ease: "power4.out"
+    })
+    .to(progressObj, {
+      value: 100,
+      duration: 2,
+      ease: "power2.inOut",
+      onUpdate: () => {
+        // Update the text and the width of the bar on every frame
+        document.querySelector(".loader-percentage").textContent = Math.round(progressObj.value) + "%";
+        gsap.set(".loader-progress", { width: progressObj.value + "%" });
+      }
+    })
+    // 2. Exit Animation
+    .to(".loader-title, .loader-percentage", {
+      opacity: 0,
+      y: -20,
+      duration: 0.5,
+      ease: "power2.in"
+    })
+    .to(".loader-overlay", {
+      yPercent: -100, // Slide the whole black screen up
+      duration: 1,
+      ease: "power4.inOut",
+      onComplete: () => {
+        // UNLOCK SCROLLING HERE
+        document.body.classList.remove("overflow-hidden");
+      }
+    })
+    // 3. Reveal Main Content
+    .to(".main-content", {
+      opacity: 1,
+      duration: 0.5
+    }, "-=0.5")
+    .from(".main-content h2", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    }, "-=0.3")
+    .from(".main-content p", {
+      y: 20,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    }, "-=0.7");
+  </script>
+</body>
+</html>
